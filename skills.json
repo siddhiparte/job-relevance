@@ -1,0 +1,443 @@
+[
+  {
+    "skill": "A/B Testing",
+    "related_skills": ["Data Analysis", "Analytics", "User Research", "Statistical Analysis", "Optimization"]
+  },
+  {
+    "skill": "Adobe Creative Suite",
+    "related_skills": ["Photoshop", "Illustrator", "InDesign", "XD", "Graphic Design", "UI Design"]
+  },
+  {
+    "skill": "Agile",
+    "related_skills": ["Scrum", "Kanban", "JIRA", "Sprint Planning", "Project Management", "Team Leadership"]
+  },
+  {
+    "skill": "AI",
+    "related_skills": ["Python", "TensorFlow", "PyTorch", "Deep Learning", "Neural Networks", "Data Science"]
+  },
+  {
+    "skill": "AJAX",
+    "related_skills": ["JavaScript", "JSON", "REST APIs", "XML", "Frontend Development", "Asynchronous Programming"]
+  },
+  {
+    "skill": "Amazon Web Services",
+    "related_skills": ["Cloud Computing", "EC2", "S3", "Lambda", "CloudFormation", "DevOps", "Cloud Architecture"]
+  },
+  {
+    "skill": "Android Development",
+    "related_skills": ["Java", "Kotlin", "Mobile Development", "XML", "Material Design", "Android Studio"]
+  },
+  {
+    "skill": "Angular",
+    "related_skills": ["TypeScript", "RxJS", "JavaScript", "HTML", "CSS", "Frontend Development", "Single Page Applications"]
+  },
+  {
+    "skill": "Ansible",
+    "related_skills": ["DevOps", "Automation", "Configuration Management", "YAML", "Linux", "Infrastructure as Code"]
+  },
+  {
+    "skill": "Apache",
+    "related_skills": ["Web Server", "Linux", "PHP", "HTTP", "Server Administration", "Network Security"]
+  },
+  {
+    "skill": "API Development",
+    "related_skills": ["REST", "GraphQL", "Web Services", "Backend Development", "Authentication", "Microservices"]
+  },
+  {
+    "skill": "ASP.NET",
+    "related_skills": ["C#", ".NET Framework", "MVC", "Web Development", "Visual Studio", "Microsoft SQL Server"]
+  },
+  {
+    "skill": "Azure",
+    "related_skills": ["Cloud Computing", "DevOps", "Azure Functions", "Cloud Services", "Microsoft SQL Server", "Active Directory"]
+  },
+  {
+    "skill": "Babel",
+    "related_skills": ["JavaScript", "ES6", "WebPack", "Node.js", "Frontend Development", "Build Tools"]
+  },
+  {
+    "skill": "Backend Development",
+    "related_skills": ["APIs", "Databases", "Server Architecture", "Authentication", "Node.js", "Python"]
+  },
+  {
+    "skill": "Bash",
+    "related_skills": ["Shell Scripting", "Linux", "Command Line", "Unix", "Automation", "DevOps"]
+  },
+  {
+    "skill": "Big Data",
+    "related_skills": ["Hadoop", "Spark", "Data Analysis", "Machine Learning", "Data Warehousing", "NoSQL"]
+  },
+  {
+    "skill": "Blockchain",
+    "related_skills": ["Cryptocurrency", "Smart Contracts", "Solidity", "Distributed Systems", "Cryptography", "Web3"]
+  },
+  {
+    "skill": "Bootstrap",
+    "related_skills": ["CSS", "HTML", "Responsive Design", "Frontend Development", "Web Design", "UI Frameworks"]
+  },
+  {
+    "skill": "C++",
+    "related_skills": ["Object-Oriented Programming", "STL", "Memory Management", "Systems Programming", "Game Development"]
+  },
+  {
+    "skill": "C#",
+    "related_skills": [".NET", "ASP.NET", "Visual Studio", "Windows Development", "Unity", "Object-Oriented Programming"]
+  },
+  {
+    "skill": "Cassandra",
+    "related_skills": ["NoSQL", "Distributed Databases", "Big Data", "Data Modeling", "Scalability"]
+  },
+  {
+    "skill": "CI/CD",
+    "related_skills": ["Jenkins", "GitLab CI", "GitHub Actions", "DevOps", "Automation", "Version Control"]
+  },
+  {
+    "skill": "Cloud Computing",
+    "related_skills": ["AWS", "Azure", "Google Cloud", "DevOps", "Virtualization", "Scalability"]
+  },
+  {
+    "skill": "Confluence",
+    "related_skills": ["Documentation", "Agile", "JIRA", "Team Collaboration", "Project Management"]
+  },
+  {
+    "skill": "CSS",
+    "related_skills": ["HTML", "SASS", "LESS", "Frontend Development", "Web Design", "Responsive Design"]
+  },
+  {
+    "skill": "Cyber Security",
+    "related_skills": ["Network Security", "Penetration Testing", "Cryptography", "Security Protocols", "Risk Assessment"]
+  },
+  {
+    "skill": "Data Analysis",
+    "related_skills": ["Statistics", "Python", "R", "SQL", "Data Visualization", "Excel"]
+  },
+  {
+    "skill": "Data Science",
+    "related_skills": ["Machine Learning", "Statistics", "Python", "R", "Data Analysis", "Big Data"]
+  },
+  {
+    "skill": "Database Design",
+    "related_skills": ["SQL", "Data Modeling", "Normalization", "ERD", "Database Administration"]
+  },
+  {
+    "skill": "Deep Learning",
+    "related_skills": ["Neural Networks", "TensorFlow", "PyTorch", "Machine Learning", "Computer Vision", "NLP"]
+  },
+  {
+    "skill": "DevOps",
+    "related_skills": ["CI/CD", "Docker", "Kubernetes", "Infrastructure as Code", "Cloud Computing", "Automation"]
+  },
+  {
+    "skill": "Django",
+    "related_skills": ["Python", "Web Development", "ORM", "REST Framework", "Backend Development", "MVT"]
+  },
+  {
+    "skill": "Docker",
+    "related_skills": ["Containerization", "DevOps", "Kubernetes", "Microservices", "CI/CD", "Container Orchestration"]
+  },
+  {
+    "skill": "Elasticsearch",
+    "related_skills": ["Search Engines", "Data Analysis", "Kibana", "Logstash", "Full-text Search", "Analytics"]
+  },
+  {
+    "skill": "Embedded Systems",
+    "related_skills": ["C", "C++", "IoT", "Hardware Programming", "Microcontrollers", "RTOS"]
+  },
+  {
+    "skill": "Express.js",
+    "related_skills": ["Node.js", "JavaScript", "Backend Development", "REST APIs", "Web Development", "Middleware"]
+  },
+  {
+    "skill": "FastAPI",
+    "related_skills": ["Python", "REST APIs", "Backend Development", "Async Programming", "API Development"]
+  },
+  {
+    "skill": "Figma",
+    "related_skills": ["UI Design", "UX Design", "Prototyping", "Design Systems", "Collaboration", "Interface Design"]
+  },
+  {
+    "skill": "Firebase",
+    "related_skills": ["NoSQL", "Backend as a Service", "Real-time Database", "Cloud Functions", "Authentication"]
+  },
+  {
+    "skill": "Flask",
+    "related_skills": ["Python", "Web Development", "REST APIs", "Backend Development", "Microservices"]
+  },
+  {
+    "skill": "Flutter",
+    "related_skills": ["Dart", "Mobile Development", "Cross-platform Development", "UI Development", "State Management"]
+  },
+  {
+    "skill": "Frontend Development",
+    "related_skills": ["HTML", "CSS", "JavaScript", "React", "Angular", "Vue.js", "Responsive Design"]
+  },
+  {
+    "skill": "Git",
+    "related_skills": ["Version Control", "GitHub", "GitLab", "Source Control", "Collaboration", "Code Management"]
+  },
+  {
+    "skill": "Go",
+    "related_skills": ["Backend Development", "Systems Programming", "Concurrency", "Microservices", "Server Development"]
+  },
+  {
+    "skill": "GraphQL",
+    "related_skills": ["API Development", "Query Language", "Backend Development", "Apollo", "REST APIs"]
+  },
+  {
+    "skill": "Hadoop",
+    "related_skills": ["Big Data", "MapReduce", "HDFS", "Data Processing", "Distributed Systems"]
+  },
+  {
+    "skill": "HTML",
+    "related_skills": ["CSS", "JavaScript", "Web Development", "Frontend Development", "Semantic Markup"]
+  },
+  {
+    "skill": "iOS Development",
+    "related_skills": ["Swift", "Objective-C", "Xcode", "Mobile Development", "UIKit", "SwiftUI"]
+  },
+  {
+    "skill": "Java",
+    "related_skills": ["Spring", "Hibernate", "Object-Oriented Programming", "Enterprise Development", "JVM"]
+  },
+  {
+    "skill": "JavaScript",
+    "related_skills": ["HTML", "CSS", "Node.js", "Frontend Development", "ES6", "Web Development"]
+  },
+  {
+    "skill": "Jenkins",
+    "related_skills": ["CI/CD", "DevOps", "Automation", "Build Management", "Pipeline Development"]
+  },
+  {
+    "skill": "JIRA",
+    "related_skills": ["Agile", "Project Management", "Scrum", "Issue Tracking", "Team Collaboration"]
+  },
+  {
+    "skill": "Kafka",
+    "related_skills": ["Stream Processing", "Distributed Systems", "Message Queue", "Event-Driven Architecture"]
+  },
+  {
+    "skill": "Kotlin",
+    "related_skills": ["Android Development", "Java", "Mobile Development", "Object-Oriented Programming"]
+  },
+  {
+    "skill": "Kubernetes",
+    "related_skills": ["Container Orchestration", "Docker", "DevOps", "Cloud Native", "Microservices"]
+  },
+  {
+    "skill": "Laravel",
+    "related_skills": ["PHP", "Web Development", "MVC", "Artisan", "Backend Development", "Eloquent ORM"]
+  },
+  {
+    "skill": "Linux",
+    "related_skills": ["Unix", "Shell Scripting", "System Administration", "Command Line", "Server Management"]
+  },
+  {
+    "skill": "Machine Learning",
+    "related_skills": ["Python", "Data Science", "AI", "Neural Networks", "Statistical Analysis", "Algorithm Design"]
+  },
+  {
+    "skill": "Microservices",
+    "related_skills": ["Distributed Systems", "API Development", "Docker", "Cloud Computing", "Service Architecture"]
+  },
+  {
+    "skill": "MongoDB",
+    "related_skills": ["NoSQL", "Database", "Document Store", "Backend Development", "Node.js", "Mongoose"]
+  },
+  {
+    "skill": "MySQL",
+    "related_skills": ["SQL", "Database Administration", "Relational Databases", "Backend Development", "Data Storage"]
+  },
+  {
+    "skill": "Natural Language Processing",
+    "related_skills": ["Machine Learning", "AI", "Text Analysis", "Python", "NLTK", "Computational Linguistics"]
+  },
+  {
+    "skill": "Next.js",
+    "related_skills": ["React", "JavaScript", "Frontend Development", "Server-Side Rendering", "Static Site Generation"]
+  },
+  {
+    "skill": "Node.js",
+    "related_skills": ["JavaScript", "Express.js", "Backend Development", "npm", "Server-Side Development"]
+  },
+  {
+    "skill": "NoSQL",
+    "related_skills": ["MongoDB", "Cassandra", "Database Design", "Big Data", "Scalability"]
+  },
+  {
+    "skill": "OAuth",
+    "related_skills": ["Authentication", "Security", "API Development", "Authorization", "Identity Management"]
+  },
+  {
+    "skill": "Object-Oriented Programming",
+    "related_skills": ["Java", "C++", "Python", "Design Patterns", "Software Architecture"]
+  },
+  {
+    "skill": "PHP",
+    "related_skills": ["Web Development", "Laravel", "MySQL", "Backend Development", "WordPress"]
+  },
+  {
+    "skill": "PostgreSQL",
+    "related_skills": ["SQL", "Database Administration", "Relational Databases", "Data Modeling", "Backend Development"]
+  },
+  {
+    "skill": "Product Management",
+    "related_skills": ["Agile", "User Stories", "Roadmapping", "Stakeholder Management", "Analytics"]
+  },
+  {
+    "skill": "Python",
+    "related_skills": ["Django", "Flask", "Data Science", "Machine Learning", "Scripting", "Backend Development"]
+  },
+  {
+    "skill": "Quality Assurance",
+    "related_skills": ["Testing", "Test Automation", "Selenium", "Test Planning", "Bug Tracking"]
+  },
+  {
+    "skill": "React",
+    "related_skills": ["JavaScript", "Frontend Development", "Redux", "JSX", "Component Development"]
+  },
+  {
+    "skill": "React Native",
+    "related_skills": ["Mobile Development", "JavaScript", "React", "Cross-platform Development", "Native Development"]
+  },
+  {
+    "skill": "Redis",
+    "related_skills": ["Caching", "In-Memory Database", "NoSQL", "Performance Optimization", "Data Structures"]
+  },
+  {
+    "skill": "Redux",
+    "related_skills": ["React", "State Management", "JavaScript", "Frontend Development", "Flux Architecture"]
+  },
+  {
+    "skill": "REST APIs",
+    "related_skills": ["API Development", "HTTP", "Backend Development", "Web Services", "JSON"]
+  },
+  {
+    "skill": "Ruby",
+    "related_skills": ["Ruby on Rails", "Backend Development", "Web Development", "Scripting", "Object-Oriented Programming"]
+  },
+  {
+    "skill": "Rust",
+    "related_skills": ["Systems Programming", "Memory Safety", "Concurrent Programming", "Performance Programming"]
+  },
+  {
+    "skill": "RxJS",
+    "related_skills": ["Angular", "Reactive Programming", "JavaScript", "Observable Pattern", "Async Programming"]
+  },
+  
+  {
+    "skill": "Scala",
+    "related_skills": ["Java", "Functional Programming", "Apache Spark", "Akka"]
+  },
+  {
+    "skill": "Scrum",
+    "related_skills": ["Agile", "Sprint Planning", "JIRA", "Product Management"]
+  },
+  {
+    "skill": "Selenium",
+    "related_skills": ["Test Automation", "Python", "Java", "TestNG"]
+  },
+  {
+    "skill": "SEO",
+    "related_skills": ["Digital Marketing", "Google Analytics", "Content Strategy", "Web Analytics"]
+  },
+  {
+    "skill": "Shell Scripting",
+    "related_skills": ["Bash", "Linux", "Command Line", "Unix"]
+  },
+  {
+    "skill": "Sklearn",
+    "related_skills": ["Python", "Machine Learning", "Pandas", "NumPy"]
+  },
+  {
+    "skill": "SOAP",
+    "related_skills": ["Web Services", "XML", "API Development", "REST"]
+  },
+  {
+    "skill": "Socket Programming",
+    "related_skills": ["Networking", "TCP/IP", "Network Security", "Java"]
+  },
+  {
+    "skill": "Software Architecture",
+    "related_skills": ["System Design", "Design Patterns", "Microservices", "Cloud Architecture"]
+  },
+  {
+    "skill": "Spark",
+    "related_skills": ["Big Data", "Hadoop", "PySpark", "Data Processing"]
+  },
+  {
+    "skill": "Spring Framework",
+    "related_skills": ["Java", "Spring Boot", "Hibernate", "Microservices"]
+  },
+  {
+    "skill": "SQL",
+    "related_skills": ["Database Design", "MySQL", "PostgreSQL", "Query Optimization"]
+  },
+  {
+    "skill": "Swift",
+    "related_skills": ["iOS Development", "Xcode", "Objective-C", "Mobile Development"]
+  },
+  {
+    "skill": "Tableau",
+    "related_skills": ["Data Visualization", "Business Intelligence", "Analytics", "Dashboard Design"]
+  },
+  {
+    "skill": "TensorFlow",
+    "related_skills": ["Machine Learning", "Deep Learning", "Python", "Neural Networks"]
+  },
+  {
+    "skill": "Terminal",
+    "related_skills": ["Command Line", "Bash", "Shell Scripting", "Linux"]
+  },
+  {
+    "skill": "Test Automation",
+    "related_skills": ["Selenium", "JUnit", "TestNG", "Continuous Integration"]
+  },
+  {
+    "skill": "TypeScript",
+    "related_skills": ["JavaScript", "Angular", "Node.js", "Web Development"]
+  },
+  {
+    "skill": "Terraform",
+    "related_skills": ["Infrastructure as Code", "AWS", "DevOps", "Cloud Computing"]
+  },
+  {
+    "skill": "Ubuntu",
+    "related_skills": ["Linux", "System Administration", "Command Line", "Shell Scripting"]
+  },
+  {
+    "skill": "UI/UX Design",
+    "related_skills": ["Figma", "Adobe XD", "Wireframing", "Prototyping"]
+  },
+  {
+    "skill": "Unity 3D",
+    "related_skills": ["Game Development", "C#", "3D Modeling", "Animation"]
+  },
+  {
+    "skill": "Unix",
+    "related_skills": ["Linux", "Shell Scripting", "System Administration", "Bash"]
+  },
+  {
+    "skill": "Version Control",
+    "related_skills": ["Git", "SVN", "GitHub", "Bitbucket"]
+  },
+  {
+    "skill": "Vue.js",
+    "related_skills": ["JavaScript", "Frontend Development", "Vuex", "Web Development"]
+  },
+  {
+    "skill": "WebSocket",
+    "related_skills": ["Real-time Communication", "JavaScript", "Node.js", "Network Programming"]
+  },
+  {
+    "skill": "WordPress",
+    "related_skills": ["PHP", "CMS", "Web Development", "Theme Development"]
+  },
+  {
+    "skill": "XML",
+    "related_skills": ["XSLT", "Web Services", "Data Exchange", "SOAP"]
+  },
+  {
+    "skill": "YAML",
+    "related_skills": ["Configuration Management", "Docker", "Kubernetes", "DevOps"]
+  }
+]
