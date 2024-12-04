@@ -1,3 +1,155 @@
+import json
+import numpy as np
+from sklearn.metrics.pairwise import cosine_similarity
+from gensim.models import Word2Vec
+from functools import lru_cache
+
+def main(user_id, model_path="node2vec_model", user_data_path="user.json", threshold=0.2): # threshold for user-interested jobs skills matching
+
+    node2vec_model = Word2Vec.load(model_path)
+    
+    with open(user_data_path, 'r') as file:
+        users_data = json.load(file)
+
+    @lru_cache(maxsize=1000)
+    def get_skill_embedding(skill):
+        try:
+            return tuple(node2vec_model.wv[skill.lower()])
+        except KeyError:
+            return tuple(np.zeros(node2vec_model.vector_size))
+
+    def calculate_similarity(skill_set1, skill_set2):
+        skill_set1 = [skill.lower() for skill in skill_set1]
+        skill_set2 = [skill.lower() for skill in skill_set2]
+
+        embeddings1 = np.array([np.array(get_skill_embedding(skill)) for skill in skill_set1])
+        embeddings2 = np.array([np.array(get_skill_embedding(skill)) for skill in skill_set2])
+ 
+        if len(embeddings1) == 0 or len(embeddings2) == 0:
+            return 0.0
+
+        similarity_matrix = cosine_similarity(embeddings1, embeddings2)
+        return float(np.mean(similarity_matrix))
+
+    user = next((u for u in users_data if u["user"]["$oid"] == user_id), None)
+    if not user:
+        return f"User with ID {user_id} not found."
+
+    user_skills = [skill["value"] for skill in user["skills"]]
+    job_scores = []
+    all_interested_skills = set()
+
+    for job in user["jobs"]:
+        job_skills = [skill["value"] for skill in job["jobSkills"]]
+        similarity_score = calculate_similarity(user_skills, job_skills)
+        
+        if similarity_score >= threshold:
+            job_scores.append({
+                "jobTitle": job["jobTitle"], 
+                "jobSkills": job_skills, 
+                "similarityScore": similarity_score
+            })
+            all_interested_skills.update(job_skills)
+
+    return {
+        "userSkills": user_skills,
+        "jobScores": job_scores,
+        "allInterestedSkills": list(all_interested_skills)
+    }
+
+def match_user_to_jobs(user_id, model_path, all_interested_skills, employer_path, similarity_threshold=0.5, exact_match_weight=1.2): # threshold for interested jobs- all jobs 
+
+    node2vec_model = Word2Vec.load(model_path)
+    
+    with open(employer_path, 'r') as employer_file:
+        employers_data = json.load(employer_file)
+
+    @lru_cache(maxsize=1000)
+    def get_skill_embedding(skill):
+        try:
+            return tuple(node2vec_model.wv[skill.lower()])
+        except KeyError:
+            return tuple(np.zeros(node2vec_model.vector_size))
+
+    def calculate_similarity(skill_set1, skill_set2):
+        skill_set1 = [skill.lower() for skill in skill_set1]
+        skill_set2 = [skill.lower() for skill in skill_set2]
+        
+        embeddings1 = np.array([np.array(get_skill_embedding(skill)) for skill in skill_set1])
+        embeddings2 = np.array([np.array(get_skill_embedding(skill)) for skill in skill_set2])
+
+        if len(embeddings1) == 0 or len(embeddings2) == 0:
+            return 0.0
+
+        similarity_matrix = cosine_similarity(embeddings1, embeddings2)
+        base_similarity = float(np.mean(similarity_matrix))
+
+        exact_matches = set(skill_set1) & set(skill_set2)
+        weighted_similarity = base_similarity + len(exact_matches) * exact_match_weight
+
+        length_weight = 2 * len(skill_set1) * len(skill_set2) / (len(skill_set1) + len(skill_set2))
+        return (weighted_similarity * length_weight) / (len(skill_set1) + len(skill_set2))
+
+    user_job_skills = [skill.lower() for skill in all_interested_skills]
+    job_matches = []
+
+    for employer in employers_data:
+        job_title = employer.get("jobTitle", {}).get("value")
+        employer_skills = [
+            skill['value'].lower()
+            for skill in employer.get("skills", [])
+            if skill and "value" in skill
+        ]
+
+        if not job_title or not employer_skills:
+            continue
+
+        similarity_score = calculate_similarity(user_job_skills, employer_skills)
+
+        if similarity_score > similarity_threshold:
+            exact_matches = set(user_job_skills) & set(employer_skills)
+            job_matches.append({
+                "jobTitle": job_title,
+                "employerSkills": employer_skills,
+                "userJobSkills": user_job_skills,
+                "similarityScore": similarity_score,
+                "exactMatches": list(exact_matches)
+            })
+
+    job_matches.sort(key=lambda x: x['similarityScore'], reverse=True)
+
+    return {
+        "userJobSkills": user_job_skills,
+        "matchedJobs": job_matches[:20]
+    }
+
+if __name__ == "__main__":
+    USER_ID = "65f7cc7b6037d2f3adac728b"
+    MODEL_PATH = "node2vec_model"
+    USER_DATA_PATH = "user.json"
+    EMPLOYER_PATH = "employer.json"
+
+    result = main(USER_ID)
+    
+    if isinstance(result, dict):
+        print(f"User Skills: {result['userSkills']}")
+        for job in result["jobScores"]:
+            print(f"Interested Job Title: {job['jobTitle']}")
+            print(f"Interested Job Skills: {job['jobSkills']}")
+            print(f"Similarity Score: {job['similarityScore']}")
+        print(f"All Interested Skills: {result['allInterestedSkills']}")
+
+        job_match_result = match_user_to_jobs(USER_ID, MODEL_PATH, result['allInterestedSkills'], EMPLOYER_PATH)
+        
+        print("\n--- Recommended Jobs ---")
+        for job in job_match_result["matchedJobs"]:
+            print(f"Job Title: {job['jobTitle']}")
+            print(f"Employer Skills: {job['employerSkills']}")
+            print(f"Exact Matches: {job['exactMatches']}")
+            print(f"Similarity Score: {job['similarityScore']:.4f}\n")
+    else:
+        print(result)
+        
 # import json
 # import numpy as np
 # from sklearn.metrics.pairwise import cosine_similarity
@@ -235,174 +387,4 @@
 
 # if __name__ == "__main__":
 #     main()        
-
-
-import json
-import numpy as np
-from sklearn.metrics.pairwise import cosine_similarity
-from gensim.models import Word2Vec
-from functools import lru_cache
-
-def main(user_id, model_path="node2vec_model", user_data_path="user.json", threshold=0.2):
-    # Load resources only once
-    node2vec_model = Word2Vec.load(model_path)
-    
-    with open(user_data_path, 'r') as file:
-        users_data = json.load(file)
-
-    # Use functools caching for repeated embedding lookups
-    @lru_cache(maxsize=1000)
-    def get_skill_embedding(skill):
-        try:
-            return tuple(node2vec_model.wv[skill.lower()])
-        except KeyError:
-            return tuple(np.zeros(node2vec_model.vector_size))
-
-    # Optimize similarity calculation
-    def calculate_similarity(skill_set1, skill_set2):
-        skill_set1 = [skill.lower() for skill in skill_set1]
-        skill_set2 = [skill.lower() for skill in skill_set2]
-        
-        # Vectorize embedding retrieval
-        embeddings1 = np.array([np.array(get_skill_embedding(skill)) for skill in skill_set1])
-        embeddings2 = np.array([np.array(get_skill_embedding(skill)) for skill in skill_set2])
-        
-        # Early return for empty sets
-        if len(embeddings1) == 0 or len(embeddings2) == 0:
-            return 0.0
-
-        # Compute similarity more efficiently
-        similarity_matrix = cosine_similarity(embeddings1, embeddings2)
-        return float(np.mean(similarity_matrix))
-
-    # Find the user more efficiently
-    user = next((u for u in users_data if u["user"]["$oid"] == user_id), None)
-    if not user:
-        return f"User with ID {user_id} not found."
-
-    # Use list comprehension and set for efficiency
-    user_skills = [skill["value"] for skill in user["skills"]]
-    job_scores = []
-    all_interested_skills = set()
-
-    # Optimize job matching
-    for job in user["jobs"]:
-        job_skills = [skill["value"] for skill in job["jobSkills"]]
-        similarity_score = calculate_similarity(user_skills, job_skills)
-        
-        if similarity_score >= threshold:
-            job_scores.append({
-                "jobTitle": job["jobTitle"], 
-                "jobSkills": job_skills, 
-                "similarityScore": similarity_score
-            })
-            all_interested_skills.update(job_skills)
-
-    return {
-        "userSkills": user_skills,
-        "jobScores": job_scores,
-        "allInterestedSkills": list(all_interested_skills)
-    }
-
-def match_user_to_jobs(user_id, model_path, all_interested_skills, employer_path, similarity_threshold=0.5, exact_match_weight=1.2):
-    # Load resources efficiently
-    node2vec_model = Word2Vec.load(model_path)
-    
-    with open(employer_path, 'r') as employer_file:
-        employers_data = json.load(employer_file)
-
-    # Cached embedding lookup
-    @lru_cache(maxsize=1000)
-    def get_skill_embedding(skill):
-        try:
-            return tuple(node2vec_model.wv[skill.lower()])
-        except KeyError:
-            return tuple(np.zeros(node2vec_model.vector_size))
-
-    # Optimized similarity calculation
-    def calculate_similarity(skill_set1, skill_set2):
-        skill_set1 = [skill.lower() for skill in skill_set1]
-        skill_set2 = [skill.lower() for skill in skill_set2]
-        
-        embeddings1 = np.array([np.array(get_skill_embedding(skill)) for skill in skill_set1])
-        embeddings2 = np.array([np.array(get_skill_embedding(skill)) for skill in skill_set2])
-
-        if len(embeddings1) == 0 or len(embeddings2) == 0:
-            return 0.0
-
-        similarity_matrix = cosine_similarity(embeddings1, embeddings2)
-        base_similarity = float(np.mean(similarity_matrix))
-        
-        # Optimize exact match calculation
-        exact_matches = set(skill_set1) & set(skill_set2)
-        weighted_similarity = base_similarity + len(exact_matches) * exact_match_weight
-
-        length_weight = 2 * len(skill_set1) * len(skill_set2) / (len(skill_set1) + len(skill_set2))
-        return (weighted_similarity * length_weight) / (len(skill_set1) + len(skill_set2))
-
-    # Use list comprehension for efficiency
-    user_job_skills = [skill.lower() for skill in all_interested_skills]
-    job_matches = []
-
-    # Optimize job matching
-    for employer in employers_data:
-        job_title = employer.get("jobTitle", {}).get("value")
-        employer_skills = [
-            skill['value'].lower()
-            for skill in employer.get("skills", [])
-            if skill and "value" in skill
-        ]
-
-        if not job_title or not employer_skills:
-            continue
-
-        similarity_score = calculate_similarity(user_job_skills, employer_skills)
-
-        if similarity_score > similarity_threshold:
-            exact_matches = set(user_job_skills) & set(employer_skills)
-            job_matches.append({
-                "jobTitle": job_title,
-                "employerSkills": employer_skills,
-                "userJobSkills": user_job_skills,
-                "similarityScore": similarity_score,
-                "exactMatches": list(exact_matches)
-            })
-
-    # Sort matches efficiently
-    job_matches.sort(key=lambda x: x['similarityScore'], reverse=True)
-
-    return {
-        "userJobSkills": user_job_skills,
-        "matchedJobs": job_matches[:20]
-    }
-
-# Example usage
-if __name__ == "__main__":
-    USER_ID = "65f7cc7b6037d2f3adac728b"
-    MODEL_PATH = "node2vec_model"
-    USER_DATA_PATH = "user.json"
-    EMPLOYER_PATH = "employer.json"
-
-    result = main(USER_ID)
-    
-    if isinstance(result, dict):
-        print(f"User Skills: {result['userSkills']}")
-        for job in result["jobScores"]:
-            print(f"Interested Job Title: {job['jobTitle']}")
-            print(f"Interested Job Skills: {job['jobSkills']}")
-            print(f"Similarity Score: {job['similarityScore']}")
-        print(f"All Interested Skills: {result['allInterestedSkills']}")
-
-        # Match to jobs
-        job_match_result = match_user_to_jobs(USER_ID, MODEL_PATH, result['allInterestedSkills'], EMPLOYER_PATH)
-        
-        print("\n--- Recommended Jobs ---")
-        for job in job_match_result["matchedJobs"]:
-            print(f"Job Title: {job['jobTitle']}")
-            print(f"Employer Skills: {job['employerSkills']}")
-            print(f"Exact Matches: {job['exactMatches']}")
-            print(f"Similarity Score: {job['similarityScore']:.4f}\n")
-    else:
-        print(result)
-        
 
